@@ -1,6 +1,8 @@
 package com.liumapp.schedule.demo.jobs;
 
 import org.quartz.*;
+import java.util.ArrayList;
+import java.util.Date;
 
 /**
  * Created by liumapp on 12/28/17.
@@ -9,18 +11,14 @@ import org.quartz.*;
  */
 public class DataParseJob implements Job {
 
-    @Override
-    public void execute(JobExecutionContext jobExecutionContext) throws JobExecutionException {
+    public void execute(JobExecutionContext context) throws JobExecutionException {
+            JobKey key = context.getJobDetail().getKey();
 
-        JobKey key = jobExecutionContext.getJobDetail().getKey();
+            JobDataMap dataMap = context.getJobDetail().getJobDataMap();
 
-        JobDataMap dataMap = jobExecutionContext.getJobDetail().getJobDataMap();
+            String jobSays = dataMap.getString("jobSays");
+            float myFloatValue = dataMap.getFloat("myFloatValue");
 
-        String jobSays = dataMap.getString("jobSays");
-        float myFloatValue = dataMap.getFloat("myFloatValue");
-
-        System.err.println("Instance " + key + " of DumbJob says: " + jobSays + ", and val is: " + myFloatValue);
-
-    }
-
+            System.err.println("Instance " + key + " of DumbJob says: " + jobSays + ", and val is: " + myFloatValue);
+        }
 }
