@@ -2,12 +2,9 @@ package com.liumapp.schedule.demo.controller;
 
 import com.liumapp.schedule.demo.jobs.SimpleJob;
 import org.quartz.*;
-import org.quartz.impl.JobDetailImpl;
 import org.quartz.impl.StdSchedulerFactory;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
-import java.text.SimpleDateFormat;
 
 /**
  * Created by liumapp on 12/19/17.
@@ -29,7 +26,7 @@ public class IndexController {
         // and start it off
         scheduler.start();
 
-        // define the job and tie it to our MyJob class
+        // define the job and tie it to our SimpleJob class
         JobDetail job = JobBuilder.newJob(SimpleJob.class)
                 .withIdentity("job1", "group1")
                 .build();
