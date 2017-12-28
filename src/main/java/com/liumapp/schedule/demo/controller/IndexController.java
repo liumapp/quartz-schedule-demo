@@ -1,10 +1,13 @@
 package com.liumapp.schedule.demo.controller;
 
-import org.quartz.Scheduler;
-import org.quartz.SchedulerException;
+import com.liumapp.schedule.demo.jobs.SimpleJob;
+import org.quartz.*;
+import org.quartz.impl.JobDetailImpl;
 import org.quartz.impl.StdSchedulerFactory;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.text.SimpleDateFormat;
 
 /**
  * Created by liumapp on 12/19/17.
@@ -25,6 +28,24 @@ public class IndexController {
 
         // and start it off
         scheduler.start();
+
+        // define the job and tie it to our MyJob class
+        JobDetail job = JobBuilder.newJob(SimpleJob.class)
+                .withIdentity("job1", "group1")
+                .build();
+
+        // Trigger the job to run now, and then repeat every 40 seconds
+        Trigger trigger = TriggerBuilder.newTrigger()
+                .withIdentity("trigger1", "group1")
+                .startNow()
+                .withSchedule(SimpleScheduleBuilder.simpleSchedule()
+                        .withIntervalInSeconds(40)
+                        .repeatForever())
+                .build();
+
+        // Tell quartz to schedule the job using our trigger
+        scheduler.scheduleJob(job, trigger);
+
         return "success";
     }
 
