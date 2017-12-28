@@ -14,7 +14,7 @@ import org.springframework.context.annotation.ImportResource;
 public class Config {
 
     @Bean
-    @ConfigurationProperties(prefix = "liumapp.module.core")
+    @ConfigurationProperties(prefix = "liumapp.schedule.demo")
     public CoreParams coreParams(){
         CoreParams coreParams = new CoreParams();
         return coreParams;
