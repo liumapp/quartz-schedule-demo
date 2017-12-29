@@ -47,35 +47,8 @@ public class IndexController {
         return "success";
     }
 
-    @RequestMapping(path = "/parameter")
-    public String parameter() throws SchedulerException {
 
-        Scheduler scheduler = StdSchedulerFactory.getDefaultScheduler();
 
-        // and start it off
-        scheduler.start();
 
-        // define the job and tie it to our SimpleJob class
-        JobDetail job = JobBuilder.newJob(DataParseJob.class)
-                .withIdentity("dataParseJob", "group1") // name "dataParseJob", group "group2"
-                .usingJobData("jobSays", "Hello World!")
-                .usingJobData("myFloatValue", 3.141f)
-                .build();
-
-        // Trigger the job to run now, and then repeat every 40 seconds
-        Trigger trigger = TriggerBuilder.newTrigger()
-                .withIdentity("trigger2", "group2")
-                .startNow()
-                .withSchedule(SimpleScheduleBuilder.simpleSchedule()
-                        .withIntervalInSeconds(40)
-                        .repeatForever())
-                .build();
-
-        // Tell quartz to schedule the job using our trigger
-        scheduler.scheduleJob(job, trigger);
-
-        return "success";
-
-    }
 
 }

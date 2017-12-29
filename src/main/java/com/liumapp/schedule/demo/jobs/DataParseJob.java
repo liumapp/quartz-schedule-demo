@@ -11,14 +11,18 @@ import java.util.Date;
  */
 public class DataParseJob implements Job {
 
+    public DataParseJob() {
+
+    }
+
     public void execute(JobExecutionContext context) throws JobExecutionException {
-            JobKey key = context.getJobDetail().getKey();
+        JobKey key = context.getJobDetail().getKey();
 
-            JobDataMap dataMap = context.getJobDetail().getJobDataMap();
+        JobDataMap dataMap = context.getJobDetail().getJobDataMap();
 
-            String jobSays = dataMap.getString("jobSays");
-            float myFloatValue = dataMap.getFloat("myFloatValue");
+        String jobSays = dataMap.getString("jobSays");
+        float myFloatValue = dataMap.getFloat("myFloatValue");
 
-            System.err.println("Instance " + key + " of DumbJob says: " + jobSays + ", and val is: " + myFloatValue);
-        }
+        System.err.println("Instance " + key + " of DumbJob says: " + jobSays + ", and val is: " + myFloatValue);
+    }
 }
