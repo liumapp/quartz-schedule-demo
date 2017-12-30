@@ -1,6 +1,5 @@
 package com.liumapp.schedule.demo.controller;
 
-import com.liumapp.schedule.demo.jobs.DataParseJob;
 import com.liumapp.schedule.demo.jobs.SimpleJob;
 import org.quartz.*;
 import org.quartz.impl.StdSchedulerFactory;

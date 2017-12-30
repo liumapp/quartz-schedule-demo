@@ -2,6 +2,8 @@ package com.liumapp.schedule.demo.jobs;
 
 import org.quartz.*;
 
+import java.util.HashMap;
+
 /**
  * Created by liumapp on 12/29/17.
  * E-mail:liumapp.com@gmail.com
@@ -10,6 +12,8 @@ import org.quartz.*;
 public class HighLevelParameterJob implements Job {
 
     private String Msg;
+
+    private HashMap<String,String> hashMap;
 
     public HighLevelParameterJob() {
     }
@@ -21,6 +25,10 @@ public class HighLevelParameterJob implements Job {
         JobDataMap dataMap = jobExecutionContext.getMergedJobDataMap();
 
         System.out.println("HighLevelParameterJob's Msg is : " + this.Msg);
+    }
+
+    public void setHashMap(HashMap<String, String> hashMap) {
+        this.hashMap = hashMap;
     }
 
     public void setMsg(String msg) {
