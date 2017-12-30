@@ -13,8 +13,6 @@ public class HighLevelParameterJob implements Job {
 
     private String Msg;
 
-    private HashMap<String,String> hashMap;
-
     public HighLevelParameterJob() {
     }
 
@@ -26,11 +24,7 @@ public class HighLevelParameterJob implements Job {
 
         System.out.println("HighLevelParameterJob's Msg is : " + this.Msg);
     }
-
-    public void setHashMap(HashMap<String, String> hashMap) {
-        this.hashMap = hashMap;
-    }
-
+    
     public void setMsg(String msg) {
         Msg = msg;
     }
