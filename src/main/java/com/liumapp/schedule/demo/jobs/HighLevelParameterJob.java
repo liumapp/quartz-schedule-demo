@@ -24,7 +24,7 @@ public class HighLevelParameterJob implements Job {
 
         System.out.println("HighLevelParameterJob's Msg is : " + this.Msg);
     }
-    
+
     public void setMsg(String msg) {
         Msg = msg;
     }
