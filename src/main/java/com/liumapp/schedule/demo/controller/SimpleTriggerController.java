@@ -38,7 +38,7 @@ public class SimpleTriggerController {
 //        // Tell quartz to schedule the job using our trigger
 //        scheduler.scheduleJob(job, trigger);
 //
-//        return "success";
+        return "success";
     }
 
 }
