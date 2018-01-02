@@ -21,7 +21,7 @@ public class MainTest {
     @Test
     public void getTimeTest () {
         Date currentTime = new Date();
-        SimpleDateFormat format = new SimpleDateFormat("yyyy-mm-dd HH:mm:ss");
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         String dateString = format.format(currentTime);
 
         String Hour = dateString.substring(11 , 13);
@@ -34,7 +34,10 @@ public class MainTest {
 
     @Test
     public void setTimeTest () {
-        
+        Date now = new Date();
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+
+        System.out.println("距离现在5分钟的时间是: " + format.format(now.getTime() + 1000 * 60 * 5) );
     }
 
 }
