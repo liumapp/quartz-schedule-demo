@@ -10,6 +10,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
+ * some unnecessary tests .
  * Created by liumapp on 1/2/18.
  * E-mail:liumapp.com@gmail.com
  * home-page:http://www.liumapp.com
@@ -18,6 +19,7 @@ import java.util.Date;
 @SpringBootTest(classes = {Main.class})
 public class MainTest {
 
+    @Ignore
     @Test
     public void getTimeTest () {
         Date currentTime = new Date();
@@ -32,6 +34,7 @@ public class MainTest {
         System.out.println(Min);
     }
 
+    @Ignore
     @Test
     public void setTimeTest () {
         Date now = new Date();

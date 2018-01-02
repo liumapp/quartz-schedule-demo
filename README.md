@@ -25,3 +25,12 @@ quartz scheduler's demo , which coming from the official site.
 
 * DataParseJob与HighLevelParameterJob的区别在于，前者直接从context中读取参数，后者将参数写入了Jobs自身的属性。
 
+## Demo3
+
+延时五秒后执行任务
+
+* 启动
+
+* 访问"http://localhost:40612/trigger"
+
+* 五秒后控制台可以看到输出。
