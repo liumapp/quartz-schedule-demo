@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class IndexController {
 
     /**
+     * demo1
      * 最简单的启动案例
      */
     @RequestMapping(path = "/")

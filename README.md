@@ -53,4 +53,12 @@ quartz scheduler's demo , which coming from the official site.
 
 * 访问"http://localhost:40612/trigger/endlater"
 
+## Demo6
+
+每个偶数小时整（14:00，16：00）执行一次任务。
+
+* 启动
+
+* 访问"http://localhost:40612/trigger/evenhour"
+
 

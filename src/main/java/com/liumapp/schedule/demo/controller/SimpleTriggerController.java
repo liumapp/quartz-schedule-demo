@@ -18,6 +18,9 @@ import java.util.concurrent.TimeUnit;
 @RequestMapping(path = "/trigger")
 public class SimpleTriggerController {
 
+    /**
+     * demo3
+     */
     @RequestMapping(path = "")
     public String index () throws SchedulerException {
         Scheduler scheduler = StdSchedulerFactory.getDefaultScheduler();
@@ -44,6 +47,9 @@ public class SimpleTriggerController {
         return "success";
     }
 
+    /**
+     * demo4
+     */
     @RequestMapping(path = "repeat")
     public String repeat () throws SchedulerException {
         Scheduler scheduler = StdSchedulerFactory.getDefaultScheduler();
@@ -73,6 +79,9 @@ public class SimpleTriggerController {
         return "success";
     }
 
+    /**
+     * demo5
+     */
     @RequestMapping(path = "endlater")
     public String endLater () throws SchedulerException {
         Scheduler scheduler = StdSchedulerFactory.getDefaultScheduler();
@@ -94,7 +103,38 @@ public class SimpleTriggerController {
                         .withIntervalInMinutes(5)
                         .repeatForever())
                 .endAt(DateBuilder.dateOf(16, 0, 0))
-                .forJob("job2", "group2") // identify job with name, group strings
+                .forJob("job3", "group3") // identify job with name, group strings
+                .build();
+
+        // Tell quartz to schedule the job using our trigger
+        scheduler.scheduleJob(job, trigger);
+        return "success";
+    }
+
+    /**
+     * demo6
+     */
+    @RequestMapping(path = "evenhour")
+    public String onlyHour () throws SchedulerException {
+        Scheduler scheduler = StdSchedulerFactory.getDefaultScheduler();
+        Date now = new Date();
+
+        // and start it off
+        scheduler.start();
+
+        // define the job and tie it to our SimpleJob class
+        JobDetail job = JobBuilder.newJob(SimpleJob.class)
+                .withIdentity("job4", "group4")
+                .build();
+
+        SimpleTrigger trigger;
+        trigger = (SimpleTrigger) TriggerBuilder.newTrigger()
+                .withIdentity("trigger4", "group4")
+                .startAt(DateBuilder.evenHourDate(null)) // get the next even-hour (minutes and seconds zero ("00:00"))
+                .withSchedule(SimpleScheduleBuilder.simpleSchedule()
+                        .withIntervalInHours(2)
+                        .repeatForever())
+                .forJob("job4", "group4") // identify job with name, group strings
                 .build();
 
         // Tell quartz to schedule the job using our trigger

@@ -19,6 +19,9 @@ import java.util.HashMap;
 @RequestMapping(path = "/parameter")
 public class ParameterController {
 
+    /**
+     * demo2
+     */
     @RequestMapping(path = "/")
     public String index() throws SchedulerException {
 
@@ -50,6 +53,10 @@ public class ParameterController {
 
     }
 
+    /**
+     * demo2
+     * "高级"版本
+     */
     @RequestMapping(path = "/advanced")
     public String advanced () throws SchedulerException {
 
