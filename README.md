@@ -44,3 +44,13 @@ quartz scheduler's demo , which coming from the official site.
 * 访问"http://localhost:40612/trigger/repeat"
 
 * 五秒后控制台可以看到输出。(一共会看到11行输出)
+
+## Demo5 
+
+立即启动一个任务，然后每隔5分钟执行一次，直到当天下午4点为止。
+
+* 启动
+
+* 访问"http://localhost:40612/trigger/endlater"
+
+
