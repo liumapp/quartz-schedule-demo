@@ -34,3 +34,13 @@ quartz scheduler's demo , which coming from the official site.
 * 访问"http://localhost:40612/trigger"
 
 * 五秒后控制台可以看到输出。
+
+## Demo4 
+
+延时五秒后启动一个任务，该任务每隔10秒执行一次，直到执行了10次为止。
+
+* 启动
+
+* 访问"http://localhost:40612/trigger/repeat"
+
+* 五秒后控制台可以看到输出。(一共会看到11行输出)

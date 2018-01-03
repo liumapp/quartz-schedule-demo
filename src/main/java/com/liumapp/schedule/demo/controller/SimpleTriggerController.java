@@ -44,4 +44,33 @@ public class SimpleTriggerController {
         return "success";
     }
 
+    @RequestMapping(path = "repeat")
+    public String repeat () throws SchedulerException {
+        Scheduler scheduler = StdSchedulerFactory.getDefaultScheduler();
+        Date now = new Date();
+
+        // and start it off
+        scheduler.start();
+
+        // define the job and tie it to our SimpleJob class
+        JobDetail job = JobBuilder.newJob(SimpleJob.class)
+                .withIdentity("job2", "group2")
+                .build();
+
+        SimpleTrigger trigger;
+        trigger = (SimpleTrigger) TriggerBuilder.newTrigger()
+                .withIdentity("trigger2", "group2")
+                .startAt(DateBuilder.futureDate(5 , DateBuilder.IntervalUnit.SECOND)) // some Date
+                .withSchedule(SimpleScheduleBuilder.simpleSchedule()
+                    .withIntervalInSeconds(10)
+                    .withRepeatCount(10))
+                .forJob("job2", "group2") // identify job with name, group strings
+                .build();
+
+        // Tell quartz to schedule the job using our trigger
+        scheduler.scheduleJob(job, trigger);
+
+        return "success";
+    }
+
 }
