@@ -1,10 +1,10 @@
 package com.liumapp.schedule.demo.jobs;
 
 import com.liumapp.schedule.demo.Main;
+import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.quartz.Scheduler;
+import org.quartz.*;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
@@ -20,7 +20,19 @@ public class HelloTest {
     @Autowired
     private Scheduler scheduler;
 
-    public void testHello () {
+    @Test
+    public void testHello () throws SchedulerException {
+        scheduler.start();
+
+        JobDetail jobDetail = JobBuilder.newJob(HelloJob.class)
+            .build();
+
+        Trigger trigger = TriggerBuilder.newTrigger()
+                .forJob(jobDetail)
+                .startNow()
+                .build();
+
+        scheduler.scheduleJob(jobDetail , trigger);
 
     }
 

@@ -3,6 +3,7 @@ package com.liumapp.schedule.demo.config;
 import com.liumapp.schedule.demo.config.spring.AutoWiringSpringBeanJobFactory;
 import org.quartz.Scheduler;
 import org.quartz.SchedulerException;
+import org.quartz.impl.StdSchedulerFactory;
 import org.quartz.spi.JobFactory;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.ApplicationContext;
@@ -35,11 +36,8 @@ public class Config {
 
     @Bean
     public Scheduler scheduler(JobFactory jobFactory) throws SchedulerException {
-        SchedulerFactoryBean schedulerFactoryBean = new SchedulerFactoryBean();
 
-        schedulerFactoryBean.setJobFactory(jobFactory);
-
-        Scheduler scheduler = schedulerFactoryBean.getScheduler();
+        Scheduler scheduler = StdSchedulerFactory.getDefaultScheduler();
         scheduler.setJobFactory(jobFactory);
 
         return scheduler;
