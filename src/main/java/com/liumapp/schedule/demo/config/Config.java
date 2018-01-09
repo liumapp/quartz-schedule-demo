@@ -1,12 +1,15 @@
 package com.liumapp.schedule.demo.config;
 
 import com.liumapp.schedule.demo.config.spring.AutoWiringSpringBeanJobFactory;
+import org.quartz.Scheduler;
+import org.quartz.SchedulerException;
 import org.quartz.spi.JobFactory;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.ImportResource;
+import org.springframework.scheduling.quartz.SchedulerFactoryBean;
 
 /**
  * Created by liumapp on 9/28/17.
@@ -28,6 +31,18 @@ public class Config {
         AutoWiringSpringBeanJobFactory jobFactory = new AutoWiringSpringBeanJobFactory();
         jobFactory.setApplicationContext(applicationContext);
         return jobFactory;
+    }
+
+    @Bean
+    public Scheduler scheduler(JobFactory jobFactory) throws SchedulerException {
+        SchedulerFactoryBean schedulerFactoryBean = new SchedulerFactoryBean();
+
+        schedulerFactoryBean.setJobFactory(jobFactory);
+
+        Scheduler scheduler = schedulerFactoryBean.getScheduler();
+        scheduler.setJobFactory(jobFactory);
+
+        return scheduler;
     }
 
 }
