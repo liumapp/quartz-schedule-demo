@@ -30,6 +30,4 @@ public class Config {
         return jobFactory;
     }
 
-    
-
 }
