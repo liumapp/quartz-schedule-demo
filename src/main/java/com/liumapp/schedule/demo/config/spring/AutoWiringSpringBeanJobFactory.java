@@ -1,6 +1,5 @@
 package com.liumapp.schedule.demo.config.spring;
 
-import org.quartz.SchedulerContext;
 import org.quartz.spi.TriggerFiredBundle;
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.config.AutowireCapableBeanFactory;
