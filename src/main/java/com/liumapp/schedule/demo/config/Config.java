@@ -1,6 +1,9 @@
 package com.liumapp.schedule.demo.config;
 
+import com.liumapp.schedule.demo.config.spring.AutoWiringSpringBeanJobFactory;
+import org.quartz.spi.JobFactory;
 import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.ImportResource;
@@ -20,6 +23,13 @@ public class Config {
         return coreParams;
     }
 
+    @Bean
+    public JobFactory jobFactory(ApplicationContext applicationContext) {
+        AutoWiringSpringBeanJobFactory jobFactory = new AutoWiringSpringBeanJobFactory();
+        jobFactory.setApplicationContext(applicationContext);
+        return jobFactory;
+    }
 
+    
 
 }
