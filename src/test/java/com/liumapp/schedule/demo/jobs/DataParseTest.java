@@ -55,4 +55,34 @@ public class DataParseTest {
         }
     }
 
+    /**
+     * demo3
+     * 自动将parameter参数写入jobs的属性中
+     */
+    @Test
+    @Ignore
+    public void parameterAutoWriteTest () throws SchedulerException, InterruptedException {
+        // define the job and tie it to our SimpleJob class
+        JobDetail job = JobBuilder.newJob(HighLevelParameterJob.class)
+                .withIdentity("highLevel", "group3") // name "highLevel", group "group3"
+                .usingJobData("Msg", "Hello World!")
+                .build();
+
+        // Trigger the job to run now, and then repeat every 40 seconds
+        Trigger trigger = TriggerBuilder.newTrigger()
+                .withIdentity("trigger3", "group3")
+                .startNow()
+                .withSchedule(SimpleScheduleBuilder.simpleSchedule()
+                        .withIntervalInSeconds(10)
+                        .repeatForever())
+                .build();
+
+        // Tell quartz to schedule the job using our trigger
+        scheduler.scheduleJob(job, trigger);
+
+        while(true) {
+            Thread.sleep(3000);
+        }
+    }
+
 }

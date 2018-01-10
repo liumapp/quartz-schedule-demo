@@ -11,15 +11,19 @@ quartz scheduler's demo , which coming from the official site.
 
 ## Demo2
 
-传递参数到Jobs中
+传递参数到Jobs中，直接从context中读取参数。
 
 * 启动Test下DataParseTest的parameterTest（请将其ignore注释）
 
 * DataParseJob将每隔10秒运行一次。
 
-* 访问 "http://localhost:40612/parameter/advanced" ，HighLevelParameterJob将每隔40秒运行一次。
+## Demo3
 
-* DataParseJob与HighLevelParameterJob的区别在于，前者直接从context中读取参数，后者将参数写入了Jobs自身的属性。
+同样传递参数到Jobs中，但将参数写入Jobs的属性。
+
+* 启动Test下DataParseTest的parameterAutoWriteTest（请将其ignore注释）
+
+* HighLevelParameterJob将每隔10秒运行一次。
 
 ## Demo3
 
