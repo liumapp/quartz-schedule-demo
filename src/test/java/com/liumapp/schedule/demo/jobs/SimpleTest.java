@@ -47,9 +47,7 @@ public class SimpleTest {
         // Tell quartz to schedule the job using our trigger
         scheduler.scheduleJob(job, trigger);
 
-        /**
-         * make job keep going
-         */
+        // make job keep going
         while (true) {
             Thread.sleep(3000);
         }
