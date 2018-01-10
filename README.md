@@ -53,8 +53,7 @@ quartz scheduler's demo , which coming from the official site.
 
 每个偶数小时整（14:00，16：00）执行一次任务。
 
-* 启动
+* 启动Test下SimpleTest的demo7Test（请将其ignore注释）
 
-* 访问"http://localhost:40612/trigger/evenhour"
-
+* 检查结果
 

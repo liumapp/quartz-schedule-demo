@@ -28,23 +28,7 @@ public class SimpleTriggerController {
         // and start it off
         scheduler.start();
 
-        // define the job and tie it to our SimpleJob class
-        JobDetail job = JobBuilder.newJob(SimpleJob.class)
-                .withIdentity("job4", "group4")
-                .build();
 
-        SimpleTrigger trigger;
-        trigger = (SimpleTrigger) TriggerBuilder.newTrigger()
-                .withIdentity("trigger4", "group4")
-                .startAt(DateBuilder.evenHourDate(null)) // get the next even-hour (minutes and seconds zero ("00:00"))
-                .withSchedule(SimpleScheduleBuilder.simpleSchedule()
-                        .withIntervalInHours(2)
-                        .repeatForever())
-                .forJob("job4", "group4") // identify job with name, group strings
-                .build();
-
-        // Tell quartz to schedule the job using our trigger
-        scheduler.scheduleJob(job, trigger);
         return "success";
     }
 
