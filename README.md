@@ -25,13 +25,11 @@ quartz scheduler's demo , which coming from the official site.
 
 * HighLevelParameterJob将每隔10秒运行一次。
 
-## Demo3
+## Demo4
 
 延时五秒后执行任务
 
-* 启动
-
-* 访问"http://localhost:40612/trigger"
+* 启动Test下SimpleTest的demo4Test（请将其ignore注释）
 
 * 五秒后控制台可以看到输出。
 

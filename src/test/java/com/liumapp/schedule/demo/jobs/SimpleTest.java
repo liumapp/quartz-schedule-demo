@@ -54,4 +54,34 @@ public class SimpleTest {
 
     }
 
+    /**
+     * demo 4
+     * 每隔5秒执行一次
+     * @throws SchedulerException quartz's
+     * @throws InterruptedException thread's
+     */
+    @Test
+    @Ignore
+    public void demo4Test () throws SchedulerException, InterruptedException {
+        // define the job and tie it to our SimpleJob class
+        JobDetail job = JobBuilder.newJob(SimpleJob.class)
+                .withIdentity("job1", "group1")
+                .build();
+
+        SimpleTrigger trigger;
+        trigger = (SimpleTrigger) TriggerBuilder.newTrigger()
+                .withIdentity("trigger1", "group1")
+                .startAt(DateBuilder.futureDate(5 , DateBuilder.IntervalUnit.SECOND)) // some Date
+                .forJob("job1", "group1") // identify job with name, group strings
+                .build();
+
+        // Tell quartz to schedule the job using our trigger
+        scheduler.scheduleJob(job, trigger);
+
+        while(true) {
+            Thread.sleep(3000);
+        }
+    }
+
+    
 }

@@ -28,20 +28,7 @@ public class SimpleTriggerController {
         // and start it off
         scheduler.start();
 
-        // define the job and tie it to our SimpleJob class
-        JobDetail job = JobBuilder.newJob(SimpleJob.class)
-                .withIdentity("job1", "group1")
-                .build();
 
-        SimpleTrigger trigger;
-        trigger = (SimpleTrigger) TriggerBuilder.newTrigger()
-                .withIdentity("trigger1", "group1")
-                .startAt(DateBuilder.futureDate(5 , DateBuilder.IntervalUnit.SECOND)) // some Date
-                .forJob("job1", "group1") // identify job with name, group strings
-                .build();
-
-        // Tell quartz to schedule the job using our trigger
-        scheduler.scheduleJob(job, trigger);
 
         return "success";
     }
