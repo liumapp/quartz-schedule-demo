@@ -9,8 +9,6 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.ImportResource;
-import org.springframework.scheduling.quartz.SchedulerFactoryBean;
 
 /**
  * Created by liumapp on 9/28/17.
@@ -39,6 +37,7 @@ public class Config {
 
         Scheduler scheduler = StdSchedulerFactory.getDefaultScheduler();
         scheduler.setJobFactory(jobFactory);
+        scheduler.start();
 
         return scheduler;
     }
