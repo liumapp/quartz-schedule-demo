@@ -5,7 +5,7 @@ quartz scheduler's demo , which coming from the official site.
 
 简单的循环任务，每隔10秒一次输出
 
-*  启动Test下SimpleTest的demo1Test
+*  启动Test下SimpleTest的demo1Test（请将其ignore注释）
 
 *  SimpleJob将每隔10秒钟运行一次。
 

@@ -1,6 +1,7 @@
 package com.liumapp.schedule.demo.jobs;
 
 import com.liumapp.schedule.demo.Main;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.quartz.*;
@@ -26,6 +27,7 @@ public class SimpleTest {
      * say something every 10 seconds.
      */
     @Test
+    @Ignore
     public void demo1Test () throws SchedulerException, InterruptedException {
 
         // define the job and tie it to our SimpleJob class

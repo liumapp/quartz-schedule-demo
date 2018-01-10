@@ -22,7 +22,6 @@ public class HelloTest {
 
     @Test
     public void testHello () throws SchedulerException {
-        scheduler.start();
 
         JobDetail jobDetail = JobBuilder.newJob(HelloJob.class)
             .build();
