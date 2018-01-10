@@ -1,6 +1,7 @@
 package com.liumapp.schedule.demo.jobs;
 
 import com.liumapp.schedule.demo.Main;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.quartz.*;
@@ -20,7 +21,13 @@ public class HelloTest {
     @Autowired
     private Scheduler scheduler;
 
+    /**
+     * Demo 8
+     * Autowiring Spring Bean into quartz's JobFactory.
+     * @throws SchedulerException Quartz's
+     */
     @Test
+    @Ignore
     public void testHello () throws SchedulerException {
 
         JobDetail jobDetail = JobBuilder.newJob(HelloJob.class)
@@ -34,6 +41,5 @@ public class HelloTest {
         scheduler.scheduleJob(jobDetail , trigger);
 
     }
-
 
 }

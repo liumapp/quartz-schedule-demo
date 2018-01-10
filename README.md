@@ -57,3 +57,12 @@ quartz scheduler's demo , which coming from the official site.
 
 * 检查结果
 
+## Demo8
+
+通过配置，将Spring的Bean对象自动加载到Quartz的JobFactory中。
+
+Demo8检测了Quartz的job在执行的过程中，能否正常使用Spring的Bean对象
+
+* 启动Test下HelloTest的Demo8Test（请将其ignore注释）
+
+* 检查运行结果
