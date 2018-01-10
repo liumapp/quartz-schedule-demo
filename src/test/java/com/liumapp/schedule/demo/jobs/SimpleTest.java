@@ -83,5 +83,72 @@ public class SimpleTest {
         }
     }
 
-    
+    /**
+     * demo5
+     * start job after 5 seconds
+     * do job everty 10 seconds
+     * only repeat for 10 times.
+     */
+    @Test
+    @Ignore
+    public void demo5Test () throws SchedulerException, InterruptedException {
+        // define the job and tie it to our SimpleJob class
+        JobDetail job = JobBuilder.newJob(SimpleJob.class)
+                .withIdentity("job2", "group2")
+                .build();
+
+        SimpleTrigger trigger;
+        trigger = (SimpleTrigger) TriggerBuilder.newTrigger()
+                .withIdentity("trigger2", "group2")
+                .startAt(DateBuilder.futureDate(5 , DateBuilder.IntervalUnit.SECOND)) // some Date
+                .withSchedule(SimpleScheduleBuilder.simpleSchedule()
+                        .withIntervalInSeconds(10)
+                        .withRepeatCount(10))
+                .forJob("job2", "group2") // identify job with name, group strings
+                .build();
+
+        // Tell quartz to schedule the job using our trigger
+        scheduler.scheduleJob(job, trigger);
+
+        while(true) {
+            Thread.sleep(3000);
+        }
+    }
+
+    /**
+     * demo 6
+     * start a job right now
+     * repeat every 5 minutes , until 16:00
+     *
+     */
+    @Test
+    @Ignore
+    public void demo6Test () throws SchedulerException, InterruptedException {
+        // define the job and tie it to our SimpleJob class
+        JobDetail job = JobBuilder.newJob(SimpleJob.class)
+                .withIdentity("job3", "group3")
+                .build();
+
+        SimpleTrigger trigger;
+        trigger = (SimpleTrigger) TriggerBuilder.newTrigger()
+                .withIdentity("trigger3", "group3")
+                .startNow()
+                .withSchedule(SimpleScheduleBuilder.simpleSchedule()
+                        .withIntervalInMinutes(5)
+                        .repeatForever())
+                .endAt(DateBuilder.dateOf(16, 0, 0))
+                .forJob("job3", "group3") // identify job with name, group strings
+                .build();
+
+        // Tell quartz to schedule the job using our trigger
+        scheduler.scheduleJob(job, trigger);
+
+        while(true) {
+            Thread.sleep(3000);
+        }
+    }
+
+
+
+
 }

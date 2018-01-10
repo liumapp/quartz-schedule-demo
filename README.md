@@ -33,25 +33,23 @@ quartz scheduler's demo , which coming from the official site.
 
 * 五秒后控制台可以看到输出。
 
-## Demo4 
+## Demo5
 
 延时五秒后启动一个任务，该任务每隔10秒执行一次，直到执行了10次为止。
 
-* 启动
-
-* 访问"http://localhost:40612/trigger/repeat"
+* 启动Test下SimpleTest的demo5Test（请将其ignore注释）
 
 * 五秒后控制台可以看到输出。(一共会看到11行输出)
 
-## Demo5 
+## Demo6
 
 立即启动一个任务，然后每隔5分钟执行一次，直到当天下午4点为止。
 
-* 启动
+* 启动Test下SimpleTest的demo6Test（请将其ignore注释）
 
-* 访问"http://localhost:40612/trigger/endlater"
+* 检查结果
 
-## Demo6
+## Demo7
 
 每个偶数小时整（14:00，16：00）执行一次任务。
 
