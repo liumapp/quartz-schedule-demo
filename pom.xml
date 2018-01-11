@@ -9,7 +9,7 @@
   </parent>
 
   <groupId>com.liumapp.schedule.demo</groupId>
-  <artifactId>quartz-scheduler-demo</artifactId>
+  <artifactId>quartz-schedule-demo</artifactId>
   <version>v1.0.0</version>
   <packaging>jar</packaging>
 
