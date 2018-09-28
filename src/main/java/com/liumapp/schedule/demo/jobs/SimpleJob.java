@@ -17,7 +17,7 @@ public class SimpleJob implements Job {
 
     @Override
     public void execute(JobExecutionContext jobExecutionContext) throws JobExecutionException {
-        System.out.println("Hello world , a simple job is running ! ");
+        System.out.println("Hello world , a simple job is running ! --------------------");
     }
 
 }

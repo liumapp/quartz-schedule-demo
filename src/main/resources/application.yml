@@ -6,9 +6,13 @@ spring:
     restart:
       exclude:  public/**
       enabled:  true
+  datasource:
+      name: auth_manager
+      url: jdbc:mysql://www.niezhiliang.com:3306/auth_manager?useUnicode=true&characterEncoding=utf8
+      username: root
+      password: nzl199595
+      driver-class-name: com.mysql.jdbc.Driver
 
 mybatis:
-  configuration:
-    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
   mapper-locations: classpath*:mappers/*Mapper.xml
 

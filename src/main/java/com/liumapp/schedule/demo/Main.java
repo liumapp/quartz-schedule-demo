@@ -1,5 +1,6 @@
 package com.liumapp.schedule.demo;
 
+import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
@@ -9,6 +10,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * home-page:http://www.liumapp.com
  */
 @SpringBootApplication(scanBasePackages = {"com.liumapp.schedule.demo"})
+@MapperScan("com.liumapp.schedule.demo.mapper")
 public class Main {
 
     public static void main(String[] args) {

@@ -27,7 +27,6 @@ public class SimpleTest {
      * say something every 10 seconds.
      */
     @Test
-    @Ignore
     public void demo1Test () throws SchedulerException, InterruptedException {
 
         // define the job and tie it to our SimpleJob class
@@ -38,10 +37,10 @@ public class SimpleTest {
         // Trigger the job to run now, and then repeat every 40 seconds
         Trigger trigger = TriggerBuilder.newTrigger()
                 .withIdentity("trigger1", "group1")
-                .startNow()
+                .startAt(DateBuilder.futureDate(10 , DateBuilder.IntervalUnit.SECOND))
                 .withSchedule(SimpleScheduleBuilder.simpleSchedule()
                         .withIntervalInSeconds(10)
-                        .repeatForever())
+                        .withRepeatCount(0))
                 .build();
 
         // Tell quartz to schedule the job using our trigger

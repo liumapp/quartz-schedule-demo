@@ -9,6 +9,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import java.util.Date;
+
 /**
  * Created by liumapp on 1/10/18.
  * E-mail:liumapp.com@gmail.com
@@ -28,7 +30,6 @@ public class DataParseTest {
      * @throws InterruptedException thread's
      */
     @Test
-    @Ignore
     public void parameterTest () throws SchedulerException, InterruptedException {
         // define the job and tie it to our SimpleJob class
         JobDetail job = JobBuilder.newJob(DataParseJob.class)
@@ -86,3 +87,5 @@ public class DataParseTest {
     }
 
 }
+
+
