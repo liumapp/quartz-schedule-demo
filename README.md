@@ -1,6 +1,8 @@
 # quartz-scheduler-demo
 quartz scheduler's demo , which coming from the official site.
 
+所有demo位于junit测试单元下的jobs/SimpleTest.java下
+
 ## Demo1
 
 简单的循环任务，每隔10秒一次输出
