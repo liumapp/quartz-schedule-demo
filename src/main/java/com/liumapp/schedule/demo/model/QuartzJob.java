@@ -19,7 +19,7 @@ public class QuartzJob {
 
     @Id
     @GeneratedValue(generator = "JDBC")
-    String id;
+    Long id;
 
     String jobName;
 
