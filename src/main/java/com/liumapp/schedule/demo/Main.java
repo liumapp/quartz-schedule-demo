@@ -9,7 +9,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * E-mail:liumapp.com@gmail.com
  * home-page:http://www.liumapp.com
  */
-@SpringBootApplication
+@SpringBootApplication(scanBasePackages = "com.liumapp.schedule.demo")
 public class Main {
 
     public static void main(String[] args) {
