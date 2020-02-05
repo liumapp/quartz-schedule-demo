@@ -1,7 +1,6 @@
 package com.liumapp.schedule.demo.service.impl;
 
-import com.liumapp.schedule.demo.domain.QuartzJob;
-import com.liumapp.schedule.demo.domain.QuartzJobExample;
+import com.liumapp.schedule.demo.model.QuartzJob;
 import com.liumapp.schedule.demo.jobs.SqlJob;
 import com.liumapp.schedule.demo.mapper.QuartzJobMapper;
 import com.liumapp.schedule.demo.service.SqlJobService;
@@ -28,9 +27,8 @@ public class SqlServiceImpl implements SqlJobService {
 
     @PostConstruct
     public void init() {
-        QuartzJobExample example = new QuartzJobExample();
-        example.createCriteria().andStatusEqualTo((byte)0);
-        List<QuartzJob> list = quartzJobMapper.selectByExample(example);
+
+        List<QuartzJob> list = quartzJobMapper.selectAll();
 
         list.forEach(quartzJob -> {
             Class clz = null;

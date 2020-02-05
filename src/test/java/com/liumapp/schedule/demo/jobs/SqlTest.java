@@ -2,7 +2,7 @@ package com.liumapp.schedule.demo.jobs;
 
 import com.alibaba.fastjson.JSON;
 import com.liumapp.schedule.demo.Main;
-import com.liumapp.schedule.demo.domain.QuartzJob;
+import com.liumapp.schedule.demo.model.QuartzJob;
 import com.liumapp.schedule.demo.mapper.QuartzJobMapper;
 import org.junit.Test;
 import org.junit.runner.RunWith;

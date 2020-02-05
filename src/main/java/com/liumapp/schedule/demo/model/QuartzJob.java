@@ -1,4 +1,4 @@
-package com.liumapp.schedule.demo.domain;
+package com.liumapp.schedule.demo.model;
 
 import lombok.Data;
 

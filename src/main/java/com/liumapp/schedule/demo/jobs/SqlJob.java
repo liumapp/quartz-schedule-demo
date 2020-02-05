@@ -1,7 +1,7 @@
 package com.liumapp.schedule.demo.jobs;
 
 import com.alibaba.fastjson.JSONObject;
-import com.liumapp.schedule.demo.domain.QuartzJob;
+import com.liumapp.schedule.demo.model.QuartzJob;
 import com.liumapp.schedule.demo.mapper.QuartzJobMapper;
 import org.quartz.*;
 import org.springframework.beans.factory.annotation.Autowired;
