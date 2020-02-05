@@ -1,14 +1,16 @@
 server:
   port: 40612
 
-spring:
-  datasource:
-      name: auth_manager
-      url: jdbc:mysql://127.0.0.1:3306/auth_manager?useUnicode=true&characterEncoding=utf8
-      username: root
-      password: adminadmin
-      driver-class-name: com.mysql.jdbc.Driver
-
-mybatis:
-  mapper-locations: classpath*:mappers/*Mapper.xml
-
+com:
+  liumapp:
+    schedule:
+      datasource:
+        type: com.alibaba.druid.pool.DruidDataSource
+        driver-class-name: org.mariadb.jdbc.Driver
+        url: jdbc:mysql://127.0.0.1:3306/auth_manager?useUnicode=true&amp;characterEncoding=UTF-8
+        username: root
+        password: adminadmin
+        validationQuery: select 1
+        validationQueryTimeout: 1000
+        max-active: 30
+        min-idle: 10
