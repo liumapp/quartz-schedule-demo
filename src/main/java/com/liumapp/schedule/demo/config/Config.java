@@ -19,13 +19,6 @@ import org.springframework.context.annotation.Configuration;
 public class Config {
 
     @Bean
-    @ConfigurationProperties(prefix = "liumapp.schedule.demo")
-    public CoreParams coreParams(){
-        CoreParams coreParams = new CoreParams();
-        return coreParams;
-    }
-
-    @Bean
     public JobFactory jobFactory(ApplicationContext applicationContext) {
         AutoWiringSpringBeanJobFactory jobFactory = new AutoWiringSpringBeanJobFactory();
         jobFactory.setApplicationContext(applicationContext);

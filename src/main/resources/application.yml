@@ -2,15 +2,11 @@ server:
   port: 40612
 
 spring:
-  devtools:
-    restart:
-      exclude:  public/**
-      enabled:  true
   datasource:
       name: auth_manager
-      url: jdbc:mysql://localhost:3306/auth_manager?useUnicode=true&characterEncoding=utf8
+      url: jdbc:mysql://127.0.0.1:3306/auth_manager?useUnicode=true&characterEncoding=utf8
       username: root
-      password: nzl199595
+      password: adminadmin
       driver-class-name: com.mysql.jdbc.Driver
 
 mybatis:
