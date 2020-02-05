@@ -1,105 +1,42 @@
 package com.liumapp.schedule.demo.domain;
 
+import lombok.Data;
+
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 import java.util.Date;
 
+/**
+ * file QuartzJob.java
+ * author liumapp
+ * github https://github.com/liumapp
+ * email liumapp.com@gmail.com
+ * homepage http://www.liumapp.com
+ * date 2020/2/5
+ */
+@Data
 public class QuartzJob {
-    private String id;
 
-    private String jobName;
+    @Id
+    @GeneratedValue(generator = "JDBC")
+    String id;
 
-    private String job;
+    String jobName;
 
-    private String group;
+    String job;
 
-    private String triggerName;
+    String group;
 
-    private Date execTime;
+    String triggerName;
 
-    private String params;
+    Date execTime;
 
-    private Byte status;
+    String params;
 
-    private String jobClass;
+    Byte status;
 
-    private Date createTime;
+    String jobClass;
 
-    public String getId() {
-        return id;
-    }
+    Date createTime;
 
-    public void setId(String id) {
-        this.id = id == null ? null : id.trim();
-    }
-
-    public String getJobName() {
-        return jobName;
-    }
-
-    public void setJobName(String jobName) {
-        this.jobName = jobName == null ? null : jobName.trim();
-    }
-
-    public String getJob() {
-        return job;
-    }
-
-    public void setJob(String job) {
-        this.job = job == null ? null : job.trim();
-    }
-
-    public String getGroup() {
-        return group;
-    }
-
-    public void setGroup(String group) {
-        this.group = group == null ? null : group.trim();
-    }
-
-    public String getTriggerName() {
-        return triggerName;
-    }
-
-    public void setTriggerName(String triggerName) {
-        this.triggerName = triggerName == null ? null : triggerName.trim();
-    }
-
-    public Date getExecTime() {
-        return execTime;
-    }
-
-    public void setExecTime(Date execTime) {
-        this.execTime = execTime;
-    }
-
-    public String getParams() {
-        return params;
-    }
-
-    public void setParams(String params) {
-        this.params = params == null ? null : params.trim();
-    }
-
-    public Byte getStatus() {
-        return status;
-    }
-
-    public void setStatus(Byte status) {
-        this.status = status;
-    }
-
-    public String getJobClass() {
-        return jobClass;
-    }
-
-    public void setJobClass(String jobClass) {
-        this.jobClass = jobClass == null ? null : jobClass.trim();
-    }
-
-    public Date getCreateTime() {
-        return createTime;
-    }
-
-    public void setCreateTime(Date createTime) {
-        this.createTime = createTime;
-    }
 }
