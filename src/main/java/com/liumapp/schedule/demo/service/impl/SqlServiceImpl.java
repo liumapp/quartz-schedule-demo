@@ -19,8 +19,10 @@ import java.util.List;
  */
 @Service
 public class SqlServiceImpl implements SqlJobService {
+
     @Autowired
     private QuartzJobMapper quartzJobMapper;
+
     @Autowired
     private Scheduler scheduler;
 
