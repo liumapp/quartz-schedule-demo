@@ -7,7 +7,7 @@ com:
       datasource:
         type: com.alibaba.druid.pool.DruidDataSource
         driver-class-name: org.mariadb.jdbc.Driver
-        url: jdbc:mysql://127.0.0.1:3306/auth_manager?useUnicode=true&amp;characterEncoding=UTF-8
+        url: jdbc:mysql://www.liumapp.com:6603/auth_manager?useUnicode=true&amp;characterEncoding=UTF-8
         username: root
         password: adminadmin
         validationQuery: select 1

@@ -23,10 +23,13 @@ import java.util.UUID;
 @SpringBootTest(classes = Main.class)
 @RunWith(SpringRunner.class)
 public class SqlTest {
+
     @Autowired
     private Scheduler scheduler;
+
     @Autowired
     private QuartzJobMapper quartzJobMapper;
+
 
     @Test
     public void AddJob() throws SchedulerException {

@@ -29,9 +29,9 @@ import javax.sql.DataSource;
  * date 2020/2/5
  */
 @Configuration
-@ConditionalOnProperty(name = "com.liumapp.schedule.datasource")
+@ConditionalOnProperty(name = "com.liumapp.schedule.datasource.url")
 @MapperScan(value = "com.liumapp.schedule.demo.mapper", sqlSessionTemplateRef = "scheduleSqlSessionTemplate" )
-public class DataSourceConfig {
+public class ScheduleDataSourceConfig {
 
     @Value("${com.liumapp.schedule.datasource.driver-class-name}")
     private String dbDriverClassName;
@@ -93,7 +93,7 @@ public class DataSourceConfig {
         return new DataSourceTransactionManager(dataSource);
     }
 
-    @Bean(name = "deviceSessionFactory")
+    @Bean(name = "scheduleSessionFactory")
     @Autowired
     public SqlSessionFactory getStatisticSqlSessionFactoryBean(@Qualifier("scheduleDataSource") DataSource dataSource) throws Exception {
         final SqlSessionFactoryBean sqlSessionFactoryBean = new SqlSessionFactoryBean();
