@@ -1,5 +1,7 @@
 package com.liumapp.schedule.demo.dto;
 
+import com.alibaba.fastjson.JSON;
+
 /**
  * file BaseJobParams.java
  * author liumapp
@@ -10,6 +12,8 @@ package com.liumapp.schedule.demo.dto;
  */
 public abstract class BaseJobParams {
 
+    public abstract String toJsonParams();
 
+    public abstract BaseJobParams fromJsonParams();
 
 }
