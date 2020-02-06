@@ -23,8 +23,6 @@ public class QuartzJob {
 
     String jobName;
 
-    String jobId;
-
     String groupId;
 
     String triggerId;

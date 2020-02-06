@@ -40,7 +40,7 @@ public class SqlServiceImpl implements SqlJobService {
             int time =  TimeUtils.getTimeSecond(quartzJob.getExecTime());
             System.out.println(quartzJob.getJobName()+"将于"+time+"s后执行一次");
             JobDetail job = JobBuilder.newJob(clz)
-                    .withIdentity(quartzJob.getJobId(), quartzJob.getGroupId())
+                    .withIdentity(quartzJob.getJobName(), quartzJob.getGroupId())
                     .usingJobData("jobSays", quartzJob.getParamsJson())
                     .build();
 

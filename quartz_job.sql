@@ -8,7 +8,6 @@ DROP TABLE IF EXISTS `quartz_job`;
 CREATE TABLE `quartz_job` (
   `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT,
   `job_name` varchar(255) NULL COMMENT '任务名称',
-  `job_id` varchar(255) NULL COMMENT 'jobid',
   `group_id` varchar(255) NULL COMMENT 'job组',
   `trigger_id` varchar(255) NULL COMMENT '调度id',
   `params_json` varchar(11845) NULL COMMENT '参数',

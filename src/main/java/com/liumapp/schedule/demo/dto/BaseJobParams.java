@@ -12,6 +12,8 @@ import com.alibaba.fastjson.JSON;
  */
 public abstract class BaseJobParams {
 
+    private Long id;
+
     public abstract String toJsonParams();
 
     public abstract BaseJobParams fromJsonParams(String jsonParams);
