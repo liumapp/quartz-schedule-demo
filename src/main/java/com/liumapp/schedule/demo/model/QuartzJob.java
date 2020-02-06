@@ -23,20 +23,29 @@ public class QuartzJob {
 
     String jobName;
 
-    String job;
+    String jobId;
 
-    String group;
+    String groupId;
 
-    String triggerName;
+    String triggerId;
 
-    Date execTime;
+    String paramsJson;
 
-    String params;
-
+    /**
+     * 0: 待执行
+     * 1: 执行完成
+     * 2: 执行失败
+     */
     Byte status;
 
     String jobClass;
 
+    String jobParamsClass;
+
+    Date execTime;
+
     Date createTime;
+
+    Byte isDelete;
 
 }
