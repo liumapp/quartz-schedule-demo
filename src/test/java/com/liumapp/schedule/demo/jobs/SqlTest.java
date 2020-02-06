@@ -48,7 +48,6 @@ public class SqlTest {
             quartzJob.setId(id);
             quartzJob.setCreateTime(now);
             quartzJob.setGroupId(groupid);
-            quartzJob.setJobId(triggerid);
             quartzJob.setTriggerId(triggerid);
             quartzJob.setJobClass(SqlJob.class.getName());
             quartzJob.setExecTime(new Date(now.getTime() + 10000*i));
