@@ -20,16 +20,16 @@ public class SqlJob implements Job {
     @Override
     public void execute(JobExecutionContext context) throws JobExecutionException {
 
-        JobDataMap dataMap = context.getJobDetail().getJobDataMap();
+    JobDataMap dataMap = context.getJobDetail().getJobDataMap();
 
-        String jobSays = dataMap.getString("jobSays");
+    String jobSays = dataMap.getString("jobSays");
 
-        JSONObject jsonObject = JSONObject.parseObject(jobSays);
-        String id = jsonObject.getString("id");
-        QuartzJob quartzJob = new QuartzJob();
+    JSONObject jsonObject = JSONObject.parseObject(jobSays);
+    String id = jsonObject.getString("id");
+    QuartzJob quartzJob = new QuartzJob();
         quartzJob.setStatus((byte)1);
         quartzJobMapper.updateByPrimaryKeySelective(quartzJob);
-        SimpleDateFormat format = new SimpleDateFormat("YYYY-MM-dd HH:mm:ss");
+    SimpleDateFormat format = new SimpleDateFormat("YYYY-MM-dd HH:mm:ss");
         System.out.println(jobSays+"-------------"+format.format(new Date()));
-    }
+}
 }
