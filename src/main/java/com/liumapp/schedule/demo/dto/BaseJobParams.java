@@ -14,6 +14,6 @@ public abstract class BaseJobParams {
 
     public abstract String toJsonParams();
 
-    public abstract BaseJobParams fromJsonParams();
+    public abstract BaseJobParams fromJsonParams(String jsonParams);
 
 }

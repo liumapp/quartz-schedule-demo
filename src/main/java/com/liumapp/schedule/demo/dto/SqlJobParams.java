@@ -1,5 +1,7 @@
 package com.liumapp.schedule.demo.dto;
 
+import com.alibaba.fastjson.JSON;
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
 /**
@@ -11,16 +13,17 @@ import org.springframework.stereotype.Component;
  * date 2020/2/6
  */
 @Component
+@Scope("prototype")
 public class SqlJobParams extends BaseJobParams {
 
     @Override
     public String toJsonParams() {
-
-        return null;
+        return JSON.toJSONString(this);
     }
 
     @Override
-    public BaseJobParams fromJsonParams() {
-        return null;
+    public SqlJobParams fromJsonParams(String jsonParams) {
+        return JSON.parseObject(jsonParams, SqlJobParams.class);
     }
+
 }
