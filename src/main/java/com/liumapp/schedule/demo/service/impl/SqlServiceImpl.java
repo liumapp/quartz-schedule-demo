@@ -40,12 +40,12 @@ public class SqlServiceImpl implements SqlJobService {
             int time =  TimeUtils.getTimeSecond(quartzJob.getExecTime());
             System.out.println(quartzJob.getJobName()+"将于"+time+"s后执行一次");
             JobDetail job = JobBuilder.newJob(clz)
-                    .withIdentity(quartzJob.getJob(), quartzJob.getGroup())
-                    .usingJobData("jobSays", quartzJob.getParams())
+                    .withIdentity(quartzJob.getJobId(), quartzJob.getGroupId())
+                    .usingJobData("jobSays", quartzJob.getParamsJson())
                     .build();
 
             Trigger trigger = TriggerBuilder.newTrigger()
-                    .withIdentity(quartzJob.getTriggerName(), quartzJob.getGroup())
+                    .withIdentity(quartzJob.getTriggerId(), quartzJob.getGroupId())
                     .startAt(DateBuilder.futureDate(time, DateBuilder.IntervalUnit.SECOND))
                     .withSchedule(SimpleScheduleBuilder.simpleSchedule())
                     .build();
