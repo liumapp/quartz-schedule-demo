@@ -27,7 +27,6 @@ public class SqlJob implements Job {
         JSONObject jsonObject = JSONObject.parseObject(jobSays);
         String id = jsonObject.getString("id");
         QuartzJob quartzJob = new QuartzJob();
-        quartzJob.setId(id);
         quartzJob.setStatus((byte)1);
         quartzJobMapper.updateByPrimaryKeySelective(quartzJob);
         SimpleDateFormat format = new SimpleDateFormat("YYYY-MM-dd HH:mm:ss");
