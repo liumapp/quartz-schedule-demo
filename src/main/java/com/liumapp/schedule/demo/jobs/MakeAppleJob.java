@@ -3,6 +3,7 @@ package com.liumapp.schedule.demo.jobs;
 import org.quartz.Job;
 import org.quartz.JobExecutionContext;
 import org.quartz.JobExecutionException;
+import org.springframework.util.StopWatch;
 
 /**
  * file MakeAppleJob.java
@@ -16,6 +17,9 @@ public class MakeAppleJob implements Job {
 
     @Override
     public void execute(JobExecutionContext jobExecutionContext) throws JobExecutionException {
+        StopWatch stopWatch = new StopWatch();
+        System.out.println("ready to make apple");
+        
 
     }
 }
