@@ -14,6 +14,12 @@ import lombok.Setter;
  */
 public class BaseJobParams {
 
+    public static byte WAITING = (byte) 0;
+
+    public static byte SUCCESS = (byte) 1;
+
+    public static byte FAILED = (byte) 2;
+
     public static String jobDataKey = "jobKey";
 
     /**
@@ -26,6 +32,8 @@ public class BaseJobParams {
     @Getter
     @Setter
     protected Long id;
+
+
 
     public BaseJobParams() {
     }
