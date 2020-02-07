@@ -1,5 +1,7 @@
 package com.liumapp.schedule.demo.utils;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
@@ -17,5 +19,21 @@ public class TimeUtils {
         long b = startDate.getTime();
         int c = (int)((b - a) / 1000);
         return c;
+    }
+
+    /**
+     *
+     * @param dateFormat yyyy-mm-dd HH:ii:ss
+     * @return
+     */
+    public static long fromDateToMilSec (String dateFormat) {
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-mm-dd HH:ii:ss");
+        Date date = null;
+        try {
+            date = simpleDateFormat.parse(dateFormat);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        return date.getTime();
     }
 }

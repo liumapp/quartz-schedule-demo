@@ -4,6 +4,7 @@ import com.liumapp.schedule.demo.Main;
 import com.liumapp.schedule.demo.dto.AppleParams;
 import com.liumapp.schedule.demo.mapper.QuartzJobMapper;
 import com.liumapp.schedule.demo.model.QuartzJob;
+import com.liumapp.schedule.demo.utils.TimeUtils;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,7 +12,9 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.util.StopWatch;
 
+import javax.validation.constraints.Max;
 import java.util.Date;
+import java.util.List;
 import java.util.UUID;
 
 import static org.junit.Assert.*;
@@ -38,7 +41,8 @@ public class MakeAppleJobTest {
     public void createMissionToDb () {
         StopWatch stopWatch = new StopWatch();
         stopWatch.start();
-        AppleParams appleParams = new AppleParams(UUID.randomUUID().getLeastSignificantBits(), "red", 3.5F);
+        AppleParams appleParams = new AppleParams(UUID.randomUUID().getLeastSignificantBits(), "red", 3.5F,
+                TimeUtils.fromDateToMilSec("2020-02-07 12:15:00"));
         QuartzJob quartzJob = QuartzJob.builder()
                 .id(appleParams.getId())
                 .jobName("make-apple")
@@ -59,6 +63,8 @@ public class MakeAppleJobTest {
      */
     @Test
     public void execute() {
+        //load mission which status = 0
+        List<QuartzJob> quartzJobs = quartzJobMapper.selectAll();
 
     }
 
