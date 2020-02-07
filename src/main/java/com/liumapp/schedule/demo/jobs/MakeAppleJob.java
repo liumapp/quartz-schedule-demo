@@ -18,7 +18,10 @@ public class MakeAppleJob implements Job {
     @Override
     public void execute(JobExecutionContext jobExecutionContext) throws JobExecutionException {
         StopWatch stopWatch = new StopWatch();
+        stopWatch.start();
         System.out.println("ready to make apple");
-        
+
+        stopWatch.stop();
+        System.out.println(stopWatch.prettyPrint());
     }
 }
