@@ -2,11 +2,14 @@ package com.liumapp.schedule.demo.jobs;
 
 import com.liumapp.schedule.demo.Main;
 import com.liumapp.schedule.demo.dto.AppleParams;
+import com.liumapp.schedule.demo.dto.BaseJobParams;
 import com.liumapp.schedule.demo.mapper.QuartzJobMapper;
 import com.liumapp.schedule.demo.model.QuartzJob;
 import com.liumapp.schedule.demo.utils.TimeUtils;
+import com.liumapp.schedule.demo.utils.UIDUtil;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.quartz.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
@@ -41,12 +44,12 @@ public class MakeAppleJobTest {
     public void createMissionToDb () {
         StopWatch stopWatch = new StopWatch();
         stopWatch.start();
-        AppleParams appleParams = new AppleParams(UUID.randomUUID().getLeastSignificantBits(), "red", 3.5F,
+        AppleParams appleParams = new AppleParams(UIDUtil.nextId(), "red", 3.5F,
                 TimeUtils.fromDateToMilSec("2020-02-07 12:15:00"));
         QuartzJob quartzJob = QuartzJob.builder()
                 .id(appleParams.getId())
                 .jobName("make-apple")
-                .groupId("make-apple-group-01")
+                .groupId("make-apple-group")
                 .triggerId("make-apple")
                 .paramsJson(appleParams.toJsonParams())
                 .jobClass(MakeAppleJob.class.getName())
@@ -64,7 +67,31 @@ public class MakeAppleJobTest {
     @Test
     public void execute() {
         //load mission which status = 0
-        List<QuartzJob> quartzJobs = quartzJobMapper.selectAll();
+        List<QuartzJob> quartzJobs = quartzJobMapper.selectActiveDetailJobs(MakeAppleJob.class.getName());
+        quartzJobs.stream().forEach(quartzJob -> {
+            Class jobClz = null;
+            Class jobParamClz = null;
+
+            try {
+                jobClz = Class.forName(quartzJob.getJobClass());
+                jobParamClz = Class.forName(quartzJob.getJobParamsClass());
+            } catch (ClassNotFoundException e) {
+                e.printStackTrace();
+            }
+
+
+
+            JobDetail jobDetail = JobBuilder.newJob(jobClz)
+                    .withIdentity(quartzJob.getId().toString(), quartzJob.getGroupId())
+                    .usingJobData(BaseJobParams.jobDataKey, quartzJob.getParamsJson())
+                    .build();
+
+//            Trigger trigger = TriggerBuilder.newTrigger()
+//                    .withIdentity(quartzJob.getTriggerId(), quartzJob.getGroupId())
+//                    .startAt(DateBuilder.futureDate())
+//                    .build();
+
+        });
 
     }
 
