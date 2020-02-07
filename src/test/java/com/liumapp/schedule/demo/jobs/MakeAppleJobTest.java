@@ -38,6 +38,9 @@ public class MakeAppleJobTest {
     @Autowired
     private QuartzJobMapper quartzJobMapper;
 
+    @Autowired
+    private Scheduler scheduler;
+
     /**
      * save quartz job info to db
      */
@@ -85,10 +88,27 @@ public class MakeAppleJobTest {
                     .usingJobData(BaseJobParams.jobDataKey, quartzJob.getParamsJson())
                     .build();
 
-//            Trigger trigger = TriggerBuilder.newTrigger()
-//                    .withIdentity(quartzJob.getTriggerId(), quartzJob.getGroupId())
-//                    .startAt(DateBuilder.futureDate())
-//                    .build();
+            Date date = new Date();
+            Trigger trigger = null;
+            if (date.getTime() > baseJobParams.getStartMakeTime()) {
+                trigger = TriggerBuilder.newTrigger()
+                        .withIdentity(quartzJob.getTriggerId(), quartzJob.getGroupId())
+                        .startNow()
+                        .withSchedule(SimpleScheduleBuilder.simpleSchedule())
+                        .build();
+            } else {
+                trigger = TriggerBuilder.newTrigger()
+                        .withIdentity(quartzJob.getTriggerId(), quartzJob.getGroupId())
+                        .startAt(DateBuilder.futureDate((int) (baseJobParams.getStartMakeTime() - date.getTime()), DateBuilder.IntervalUnit.MILLISECOND))
+                        .withSchedule(SimpleScheduleBuilder.simpleSchedule())
+                        .build();
+            }
+
+            try {
+                scheduler.scheduleJob(jobDetail, trigger);
+            } catch (SchedulerException e) {
+                e.printStackTrace();
+            }
 
         });
 
