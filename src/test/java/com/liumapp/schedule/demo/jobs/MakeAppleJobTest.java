@@ -1,5 +1,6 @@
 package com.liumapp.schedule.demo.jobs;
 
+import com.alibaba.fastjson.JSON;
 import com.liumapp.schedule.demo.Main;
 import com.liumapp.schedule.demo.dto.AppleParams;
 import com.liumapp.schedule.demo.dto.BaseJobParams;
@@ -44,8 +45,8 @@ public class MakeAppleJobTest {
     public void createMissionToDb () {
         StopWatch stopWatch = new StopWatch();
         stopWatch.start();
-        AppleParams appleParams = new AppleParams(UIDUtil.nextId(), "red", 3.5F,
-                TimeUtils.fromDateToMilSec("2020-02-07 12:15:00"));
+        AppleParams appleParams = new AppleParams(TimeUtils.fromDateToMilSec("2020-02-07 12:15:00"),
+                UIDUtil.nextId(), "red", 3.5F);
         QuartzJob quartzJob = QuartzJob.builder()
                 .id(appleParams.getId())
                 .jobName("make-apple")
@@ -70,16 +71,14 @@ public class MakeAppleJobTest {
         List<QuartzJob> quartzJobs = quartzJobMapper.selectActiveDetailJobs(MakeAppleJob.class.getName());
         quartzJobs.stream().forEach(quartzJob -> {
             Class jobClz = null;
-            Class jobParamClz = null;
 
             try {
                 jobClz = Class.forName(quartzJob.getJobClass());
-                jobParamClz = Class.forName(quartzJob.getJobParamsClass());
             } catch (ClassNotFoundException e) {
                 e.printStackTrace();
             }
 
-
+            BaseJobParams baseJobParams = JSON.parseObject(quartzJob.getParamsJson(), BaseJobParams.class);
 
             JobDetail jobDetail = JobBuilder.newJob(jobClz)
                     .withIdentity(quartzJob.getId().toString(), quartzJob.getGroupId())

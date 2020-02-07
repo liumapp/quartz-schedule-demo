@@ -25,16 +25,13 @@ public class AppleParams extends BaseJobParams {
 
     private float price;
 
-    private Long startMakeTime;
-
     public AppleParams() {
     }
 
-    public AppleParams(Long id, String color, float price, Long startMakeTime) {
-        super(id);
+    public AppleParams(Long startMakeTime, Long id, String color, float price) {
+        super(startMakeTime, id);
         this.color = color;
         this.price = price;
-        this.startMakeTime = startMakeTime;
     }
 
     @Override

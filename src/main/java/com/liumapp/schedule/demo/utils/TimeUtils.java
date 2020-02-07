@@ -27,7 +27,7 @@ public class TimeUtils {
      * @return
      */
     public static long fromDateToMilSec (String dateFormat) {
-        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-mm-dd HH:ii:ss");
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         Date date = null;
         try {
             date = simpleDateFormat.parse(dateFormat);

@@ -25,38 +25,38 @@ public class SqlServiceImpl implements SqlJobService {
     @Autowired
     private Scheduler scheduler;
 
-    @PostConstruct
-    public void init() {
-
-        List<QuartzJob> list = quartzJobMapper.selectAll();
-
-        list.forEach(quartzJob -> {
-            Class clz = null;
-            try {
-                clz = Class.forName(quartzJob.getJobClass());
-            } catch (ClassNotFoundException e) {
-                e.printStackTrace();
-            }
-            int time =  TimeUtils.getTimeSecond(quartzJob.getExecTime());
-            System.out.println(quartzJob.getJobName()+"将于"+time+"s后执行一次");
-            JobDetail job = JobBuilder.newJob(clz)
-                    .withIdentity(quartzJob.getJobName(), quartzJob.getGroupId())
-                    .usingJobData("jobSays", quartzJob.getParamsJson())
-                    .build();
-
-            Trigger trigger = TriggerBuilder.newTrigger()
-                    .withIdentity(quartzJob.getTriggerId(), quartzJob.getGroupId())
-                    .startAt(DateBuilder.futureDate(time, DateBuilder.IntervalUnit.SECOND))
-                    .withSchedule(SimpleScheduleBuilder.simpleSchedule())
-                    .build();
-
-            try {
-                scheduler.scheduleJob(job, trigger);
-            } catch (SchedulerException e) {
-                e.printStackTrace();
-            }
-        });
-    }
+//    @PostConstruct
+//    public void init() {
+//
+//        List<QuartzJob> list = quartzJobMapper.selectAll();
+//
+//        list.forEach(quartzJob -> {
+//            Class clz = null;
+//            try {
+//                clz = Class.forName(quartzJob.getJobClass());
+//            } catch (ClassNotFoundException e) {
+//                e.printStackTrace();
+//            }
+//            int time =  TimeUtils.getTimeSecond(quartzJob.getExecTime());
+//            System.out.println(quartzJob.getJobName()+"将于"+time+"s后执行一次");
+//            JobDetail job = JobBuilder.newJob(clz)
+//                    .withIdentity(quartzJob.getJobName(), quartzJob.getGroupId())
+//                    .usingJobData("jobSays", quartzJob.getParamsJson())
+//                    .build();
+//
+//            Trigger trigger = TriggerBuilder.newTrigger()
+//                    .withIdentity(quartzJob.getTriggerId(), quartzJob.getGroupId())
+//                    .startAt(DateBuilder.futureDate(time, DateBuilder.IntervalUnit.SECOND))
+//                    .withSchedule(SimpleScheduleBuilder.simpleSchedule())
+//                    .build();
+//
+//            try {
+//                scheduler.scheduleJob(job, trigger);
+//            } catch (SchedulerException e) {
+//                e.printStackTrace();
+//            }
+//        });
+//    }
 
     @Override
     public int addJob(SqlJob sqlJob) {
