@@ -1,6 +1,9 @@
 package com.liumapp.schedule.demo.model;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -15,6 +18,9 @@ import java.util.Date;
  * date 2020/2/5
  */
 @Data
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class QuartzJob {
 
     @Id

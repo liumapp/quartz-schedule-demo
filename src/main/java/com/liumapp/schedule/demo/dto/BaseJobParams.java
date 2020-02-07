@@ -1,6 +1,8 @@
 package com.liumapp.schedule.demo.dto;
 
 import com.alibaba.fastjson.JSON;
+import lombok.Getter;
+import lombok.Setter;
 
 /**
  * file BaseJobParams.java
@@ -14,7 +16,16 @@ public abstract class BaseJobParams {
 
     public static String jobDataKey = "jobKey";
 
-    private Long id;
+    @Getter
+    @Setter
+    protected Long id;
+
+    public BaseJobParams() {
+    }
+
+    public BaseJobParams(Long id) {
+        this.id = id;
+    }
 
     public abstract String toJsonParams();
 
