@@ -20,6 +20,5 @@ public class MakeAppleJob implements Job {
         StopWatch stopWatch = new StopWatch();
         System.out.println("ready to make apple");
         
-
     }
 }
