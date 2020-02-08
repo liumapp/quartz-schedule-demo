@@ -33,8 +33,6 @@ public class BaseJobParams {
     @Setter
     protected Long id;
 
-
-
     public BaseJobParams() {
     }
 
