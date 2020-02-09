@@ -18,7 +18,7 @@ import java.util.List;
 @org.apache.ibatis.annotations.Mapper
 public interface QuartzJobMapper extends Mapper<QuartzJob>{
 
-    @Select("select * from quartz_job where status = 0")
+    @Select("select * from quartz_job where is_delete = 0")
     List<QuartzJob> selectAll();
 
     @Select("select * from quartz_job where job_class = #{jobClass} and status = 0")
