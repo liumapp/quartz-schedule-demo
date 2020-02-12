@@ -11,7 +11,7 @@ import java.util.UUID;
  * homepage http://www.liumapp.com
  * date 2020/2/7
  */
-public  final class UIDUtil {
+public final class UIDUtil {
 
     private static  final int SHORT_MAX=65536;
 
